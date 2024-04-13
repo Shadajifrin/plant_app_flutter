@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plant_app_flutter/screens/login_page.dart';
-import 'package:plant_app_flutter/screens/register.dart';
+import 'package:plant_app_flutter/screens/login_screen.dart';
+import 'package:plant_app_flutter/screens/signup_screen.dart';
 class Splash extends StatelessWidget {
   const Splash({Key? key});
 
@@ -57,7 +57,7 @@ class Splash extends StatelessWidget {
                            Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignupPage(),
+                            builder: (context) => const SignupScreen(),
                           ),
                         );
                         },
@@ -80,7 +80,7 @@ class Splash extends StatelessWidget {
                             Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>  LoginPage(),
+                            builder: (context) =>  LoginScreen(),
                           ),
                         );
                         },
