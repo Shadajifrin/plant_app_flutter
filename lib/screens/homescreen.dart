@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app_flutter/models/container.dart';
+import 'package:plant_app_flutter/models/details.dart';
+import 'package:plant_app_flutter/screens/detailsscreen.dart';
+
 
 class HomeScreen extends StatelessWidget {
   final List<ContainerData> dataList = [
@@ -74,55 +77,66 @@ class HomeScreen extends StatelessWidget {
                     final color =
                         containerColors[index % containerColors.length]; // Assign color based on index
 
-                    return Container(
-                      padding: EdgeInsets.all(20), // Adjust padding as needed
-                      decoration: BoxDecoration(
-                        color: color, // Use color from the list
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 100, // Set the maximum height for the image
-                            child: AspectRatio(
-                              aspectRatio: 1, // Maintain aspect ratio
-                              child: Image.asset(
-                                data.imagePath,
-                                fit: BoxFit.cover, // Cover the entire box
+                    return GestureDetector(
+                      onTap: () {
+                        // Navigate to detail page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                          builder: (context) => DetailsScreen(plant:plantlist[index]), // Pass the data to the detail page
+                          ),
+                        );
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(20), // Adjust padding as needed
+                        decoration: BoxDecoration(
+                          color: color, // Use color from the list
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: 100, // Set the maximum height for the image
+                              child: AspectRatio(
+                                aspectRatio: 1, // Maintain aspect ratio
+                                child: Image.asset(
+                                  data.imagePath,
+                                  fit: BoxFit.cover, // Cover the entire box
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: 10),
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  data.title,
-                                  style: TextStyle(
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.black,
+                            SizedBox(width: 10),
+                            Flexible(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    data.title,
+                                    style: TextStyle(
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.black,
+                                    ),
                                   ),
-                                ),
-                                Text(
-                                  data.subtitle,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color.fromARGB(255, 138, 138, 138),
+                                  Text(
+                                    data.subtitle,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Color.fromARGB(255, 138, 138, 138),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                          Spacer(),
-                          Icon(
-                            Icons.water_drop,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                        ],
+                            Spacer(),
+                            Icon(
+                              Icons.water_drop,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   } else {

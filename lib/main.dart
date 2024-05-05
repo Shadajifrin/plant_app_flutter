@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:plant_app_flutter/screens/homescreen.dart';
-//import 'package:plant_app_flutter/screens/splash.dart';
+
+
+import 'package:plant_app_flutter/screens/splash.dart';
 
 
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:HomeScreen(),
+      home:Splash(),
     );
   }
 
